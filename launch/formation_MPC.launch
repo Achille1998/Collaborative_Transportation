@@ -1,0 +1,12 @@
+<launch>
+
+<node pkg="square_move" type="Nav_MPC_formation.py" name="Nav_MPC_formation" output="screen"/>
+<node pkg="square_move" type="MPC_box_displacement.py" name="MPC_box_displacement" output = "screen" />
+<!-- <node pkg="square_move" type="send_target.py" name="send_target" /> -->
+<!-- <node
+    pkg="rqt_plot"
+    type="rqt_plot"
+    name= "rqt_plot_box_disp_ref"
+    args="/box/displacement/displacement[0]:displacement[1]:displacement[2]:displacement[3]:displacement[4]:displacement[5]"/> -->
+
+</launch>

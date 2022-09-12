@@ -1,0 +1,55 @@
+
+<launch>
+<arg name="rosie0" default="true" />
+<arg name="rosie1" default="true" />
+<arg name="rosie2" default="true" />
+
+<group if="$(arg rosie0)">
+        <machine
+            name="12.0.50.4"
+            address="12.0.50.4"
+            env-loader="~/env_remote0_achille.sh" 
+            default="true"
+            user="hebi"
+        />
+
+
+    <!-- gripper0 -->
+    <node machine="12.0.50.4" pkg="kino_gripper" type="kino_gripper_node" name="gripper_node0" output="screen"/>
+</group>
+
+
+
+
+<group if="$(arg rosie1)"> 
+   
+        <machine
+                name="12.0.50.8"
+                address="12.0.50.8"
+                env-loader="~/env_remote1_achille.sh" 
+                default="true"
+                user="hebi"
+            />
+
+
+    <!-- gripper1 -->
+    <node machine="12.0.50.8" pkg="kino_gripper" type="kino_gripper_node" name="gripper_node1" output="screen"/>
+</group>
+
+<group if="$(arg rosie2)"> 
+    
+    <machine
+            name="12.0.50.12"
+            address="12.0.50.12"
+            env-loader="~/env_remote2_achille.sh" 
+            default="true"
+            user="hebi"
+        />
+    
+
+
+    <!-- gripper2 --> 
+    <node machine="12.0.50.12" pkg="kino_gripper" type="kino_gripper_node" name="gripper_node2" output="screen"/>
+</group>
+
+</launch>

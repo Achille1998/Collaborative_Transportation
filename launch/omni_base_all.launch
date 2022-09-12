@@ -1,0 +1,56 @@
+<launch>
+
+
+<!-- rosie0 -->
+
+    <machine
+        name="12.0.50.4"
+        address="12.0.50.4"
+        env-loader="~/env_remote0_achille.sh" 
+        default="true"
+        user="hebi"
+    />
+<rosparam file="$(find square_move)/config/omni_base_params0.yaml" command="load" ns="omni_base_params0"/>
+
+<remap from="/cmd_vel" to="/rosie0/cmd_vel"/>
+  
+<remap from="motion/" to="/rosie0/motion/" /> 
+
+<node machine="12.0.50.4" pkg="hebi_cpp_api_examples" type="omni_base_node_for3robots" name="omni_base_rosie0" />
+
+
+<!-- rosie1 -->
+ <machine
+        name="12.0.50.8"
+        address="12.0.50.8"
+        env-loader="~/env_remote1_achille.sh" 
+        default="true"
+        user="hebi"
+    />
+<rosparam file="$(find square_move)/config/omni_base_params1.yaml" command="load"  ns="omni_base_params1" />
+<remap from="/cmd_vel" to="/rosie1/cmd_vel"/>
+  
+<remap from="motion/" to="/rosie1/motion/" /> 
+
+<node machine="12.0.50.8" pkg="hebi_cpp_api_examples" type="omni_base_node_for3robots" name="omni_base_rosie1" />
+
+
+<!-- rosie2 -->
+
+ <machine
+        name="12.0.50.12"
+        address="12.0.50.12"
+        env-loader="~/env_remote2_achille.sh" 
+        default="true"
+        user="hebi"
+    />
+<rosparam file="$(find square_move)/config/omni_base_params2.yaml" command="load"  ns="omni_base_params2" />
+
+<remap from="/cmd_vel" to="/rosie2/cmd_vel"/>
+  
+<remap from="motion/" to="/rosie2/motion/" /> 
+
+<node machine="12.0.50.12" pkg="hebi_cpp_api_examples" type="omni_base_node_for3robots" name="omni_base_rosie2" /> 
+
+
+</launch>

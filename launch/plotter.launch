@@ -1,0 +1,33 @@
+<launch>
+
+<!-- <node  pkg="square_move" type="force_arm_control.py" name="force_arm_control" output="screen"/> -->
+ <!-- <include file="$(find mocap_qualisys)/launch/qualisys.launch" launch-prefix="xterm -e"/> -->
+
+<node name="box_displacement"
+    pkg="rqt_plot"
+    type="rqt_plot"
+    args="/box/real_displacement/displacement[0]:displacement[1]:displacement[2]:displacement[5]
+         /box/displacement/displacement[0]:displacement[1]:displacement[2]" />
+
+<node name="box_position"
+    pkg="rqt_plot"
+    type="rqt_plot"
+    args="/box/target_pos/pos[0]:pos[1]:pos[3]
+            /Formation/pose/pos[0]:pos[1]:pos[2]"/> -->
+
+<!-- <node name="Vel_arms"
+    pkg="rqt_plot"
+    type="rqt_plot"
+    args="/Arm0/vel_ref/force[0]:force[1]:force[2]
+          /Arm1/vel_ref/force[0]:force[1]:force[2]
+          /Arm2/vel_ref/force[0]:force[1]:force[2] " /> -->
+
+<node  pkg="square_move" type="online_plotter.py" name="online_plotter"/>
+
+<!-- <node name="EE_error"
+    pkg="rqt_plot"
+    type="rqt_plot"
+    args="/Arm0/error_pose/force[0]:force[1]:force[2]:force[3]:force[4]:force[5]" /> -->
+
+</launch>
+

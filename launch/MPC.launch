@@ -1,0 +1,10 @@
+<launch>
+
+
+<remap from="/rosie_name/target_pose" to="/rosie1/target_pos"/> 
+
+<node pkg="square_move" type="MPC.py" name="MPC_rosie1" />
+
+
+
+</launch>

@@ -1,0 +1,23 @@
+<launch>
+
+
+<group ns="/rosie0">
+    <param name="rosie_name" type="str" value="rosie0"  />
+    <node pkg="square_move" type="MPC.py" name="MPC_rosie0" output="screen" /> 
+</group>
+
+<group ns="/rosie1">
+    <param name="rosie_name" type="str" value="rosie1"  />
+    <node pkg="square_move" type="MPC.py" name="MPC_rosie1" output="screen"/>
+        
+</group>
+
+<group ns="/rosie2">
+    <param name="rosie_name" type="str" value="rosie2"  />
+    <node pkg="square_move" type="MPC.py" name="MPC_rosie2" output="screen" />
+        
+</group>
+
+
+
+</launch>

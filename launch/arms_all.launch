@@ -1,0 +1,83 @@
+
+<launch>
+<arg name="Arm0" default="true" />
+<arg name="Arm1" default="true" />
+<arg name="Arm2" default="true" />
+
+<group if="$(arg Arm0)">
+    <!-- rosie0 -->
+
+        <machine
+            name="12.0.50.4"
+            address="12.0.50.4"
+            env-loader="~/env_remote0_achille.sh" 
+            default="true"
+            user="hebi"
+        />
+
+    <remap from="joint_states" to="/Arm0/joint_states"/>
+    
+    <remap from="joint_waypoints" to="/Arm0/joint_waypoints/" /> 
+
+    <rosparam file="$(find square_move)/config/A-2085-06_params0.yaml" command="load" ns="Arm_param_0" />
+
+    <node machine="12.0.50.4" pkg="hebi_cpp_api_examples" type="arm_node_for_3_robots" name="arm_node0" output="screen"/>
+
+    
+    <node machine="12.0.50.4" pkg="kino_gripper" type="kino_gripper_node" name="gripper_node0" />
+</group>
+
+<!-- <include file="$(find mocap_qualisys)/launch/qualisys.launch" /> -->
+
+<!-- <node name="Gravity_compensation"
+    pkg="rqt_plot"
+    type="rqt_plot"
+    args="/Arm0/joint_states/effort[0]:effort[1]:effort[2]:effort[3]:effort[4]:effort[5]
+         /Arm0/grav_torque/effort[0]:effort[1]:effort[2]:effort[3]:effort[4]:effort[5]" /> -->
+
+
+
+<group if="$(arg Arm1)"> 
+    <!-- rosie1 -->
+        <machine
+                name="12.0.50.8"
+                address="12.0.50.8"
+                env-loader="~/env_remote1_achille.sh" 
+                default="true"
+                user="hebi"
+            />
+    <remap from="joint_states" to="/Arm1/joint_states"/>
+    
+    <remap from="joint_waypoints" to="/Arm1/joint_waypoints/" /> 
+
+    <rosparam file="$(find square_move)/config/A-2085-06_params1.yaml" command="load" ns="Arm_param_1"/>
+
+    <node machine="12.0.50.8" pkg="hebi_cpp_api_examples" type="arm_node_for_3_robots" name="arm_node1" />
+
+    
+    <node machine="12.0.50.8" pkg="kino_gripper" type="kino_gripper_node" name="gripper_node1" />
+</group>
+
+<group if="$(arg Arm2)"> 
+    <!-- rosie2 --> 
+
+    <machine
+            name="12.0.50.12"
+            address="12.0.50.12"
+            env-loader="~/env_remote2_achille.sh" 
+            default="true"
+            user="hebi"
+        />
+    <remap from="joint_states" to="/Arm2/joint_states"/>
+    
+    <remap from="joint_waypoints" to="/Arm2/joint_waypoints/" /> 
+
+    <rosparam file="$(find square_move)/config/A-2085-06_params2.yaml" command="load" ns="Arm_param_2" />
+
+    <node machine="12.0.50.12" pkg="hebi_cpp_api_examples" type="arm_node_for_3_robots" name="arm_node2" output="screen"/>
+
+    
+    <node machine="12.0.50.12" pkg="kino_gripper" type="kino_gripper_node" name="gripper_node2" />
+</group>
+
+</launch>

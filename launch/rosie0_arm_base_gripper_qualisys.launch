@@ -1,0 +1,34 @@
+<launch>
+
+<!-- qualisys -->
+
+<include file="$(find mocap_qualisys)/launch/qualisys.launch" />
+
+ <machine
+        name="12.0.50.4"
+        address="12.0.50.4"
+        env-loader="~/env_remote0_achille.sh" 
+        default="true"
+        user="hebi"
+    />
+<rosparam file="$(find square_move)/config/omni_base_params0.yaml" command="load" ns="omni_base_params0"/>
+
+<remap from="/cmd_vel" to="/rosie0/cmd_vel"/>
+  
+<remap from="motion/" to="/rosie0/motion/" /> 
+
+<node machine="12.0.50.4" pkg="hebi_cpp_api_examples" type="omni_base_node_for3robots" name="omni_base_rosie0" />
+
+
+<rosparam file="$(find square_move)/config/A-2085-06_params.yaml" command="load" />
+
+<node machine="12.0.50.4" pkg="hebi_cpp_api_examples" type="arm_node" name="arm_node" output="screen"/>
+
+<node machine="12.0.50.4" pkg="kino_gripper" type="kino_gripper_node" name="kino_gripper_node" />
+
+<!-- <include file="$(find square_move)/launch/omni_base_all.launch" /> -->
+
+
+
+
+</launch>

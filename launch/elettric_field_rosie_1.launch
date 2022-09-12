@@ -1,0 +1,11 @@
+<launch>
+
+<!-- qualisys -->
+
+<include file="$(find mocap_qualisys)/launch/qualisys.launch" />
+<include file="$(find square_move)/launch/omni_base_all.launch" />
+
+
+
+
+</launch>
